@@ -1,90 +1,182 @@
-/* TechCart. Clase 2: estilos base (selectores, especificidad y box model). */
-
-* { box-sizing: border-box; }              /* el ancho incluye padding y borde */
+* {
+  box-sizing: border-box;
+}
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; /* tipografia */
-  color: #1d1d1f;        /* color del texto */
-  background: #f5f5f7;   /* color de fondo */
-  max-width: 900px;      /* ancho maximo */
-  margin: 0 auto;        /* centra la pagina */
-  padding: 1rem;         /* espacio interno */
-  line-height: 1.5;      /* alto de linea */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1d1d1f;
+  background: #f5f5f7;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  line-height: 1.5;
 }
 
 header {
-  background: #fff;      /* fondo */
-  padding: 1rem 1.25rem; /* espacio interno */
-  border-radius: 12px;   /* esquinas redondeadas */
-  margin-bottom: 1.5rem; /* separacion inferior */
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
 }
-header h1 { color: #0066cc; margin: 0; }   /* color de marca; sin margen */
 
-nav ul { list-style: none; padding: 0; margin: .5rem 0 0; } /* lista sin viñetas */
-nav li { display: inline; margin-right: 1rem; }             /* items en linea */
-nav a { color: #0066cc; text-decoration: none; }            /* enlace sin subrayado */
-nav a:hover { text-decoration: underline; }                 /* subraya al pasar el mouse */
+header h1 {
+  color: #0066cc;
+  margin: 0;
+}
 
-h2 { font-size: 1.4rem; }   /* tamaño de subtitulo */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+nav a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+aside {
+  background: #ffffff;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+aside h2 {
+  margin-top: 0;
+}
+
+aside a {
+  display: inline-block;
+  color: #0066cc;
+  text-decoration: none;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+aside a:hover {
+  text-decoration: underline;
+}
 
 article {
-  display: inline-block; /* tarjetas una al lado de otra */
-  width: 200px;          /* ancho */
-  vertical-align: top;   /* alinea arriba */
-  background: #fff;      /* fondo */
-  border: 1px solid #d2d2d7; /* borde */
-  border-radius: 12px;   /* esquinas redondeadas */
-  padding: 1rem;         /* espacio interno */
-  margin: .5rem;         /* espacio externo */
-  text-align: center;    /* centra el contenido */
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+  background: #ffffff;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
-article img {
-  width: 100%;           /* ocupa el ancho de la tarjeta */
-  aspect-ratio: 1;       /* caja cuadrada */
-  object-fit: contain;   /* imagen entera, sin deformar */
-}
-article h3 { font-size: 1rem; margin: .5rem 0 .25rem; }   /* tamaño y margenes */
-article strong { color: #0a7d2c; font-size: 1.1rem; }     /* el precio resalta */
 
-figure { margin: 0; }    /* sin margenes */
+article:hover {
+  transform: translateY(-4px);
+}
+
+article img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+article h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+article strong {
+  color: #0a7d2c;
+  font-size: 1.1rem;
+}
+
+figure {
+  margin: 0;
+}
+
 figcaption {
-  color: #6e6e73;        /* color tenue */
-  font-size: .75rem;     /* tamaño pequeño */
-  text-transform: uppercase; /* mayusculas */
-  letter-spacing: .04em; /* espaciado entre letras */
+  color: #6e6e73;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 button {
-  background: #0066cc;   /* fondo de marca */
-  color: #fff;           /* texto blanco */
-  border: 0;             /* sin borde */
-  border-radius: 999px;  /* forma pildora */
-  padding: .5rem 1rem;   /* espacio interno */
-  cursor: pointer;       /* cursor de mano */
+  background: #0066cc;
+  color: #ffffff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
-button:hover { filter: brightness(1.1); }  /* se aclara al pasar el mouse */
+
+button:hover {
+  filter: brightness(1.1);
+}
 
 .destacado {
-  border-color: #0066cc; /* borde azul */
-  border-width: 2px;     /* borde mas grueso */
+  border-color: #0066cc;
+  border-width: 2px;
+}
+
+#destacado .titulo {
+  color: #0066cc;
 }
 
 #compra {
-  background: #fff;      /* fondo */
-  border-radius: 12px;   /* esquinas redondeadas */
-  padding: 1.5rem;       /* espacio interno */
-  margin-top: 2rem;      /* separacion superior */
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
 }
+
 #compra input,
 #compra select,
 #compra textarea {
-  width: 100%;           /* ancho completo */
-  padding: .5rem;        /* espacio interno */
-  border: 1px solid #d2d2d7; /* borde */
-  border-radius: 8px;    /* esquinas redondeadas */
-  margin-top: .25rem;    /* separacion superior */
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  margin-top: 0.25rem;
 }
-fieldset { border: 1px solid #d2d2d7; border-radius: 10px; margin-bottom: 1rem; padding: 1rem; } /* marco del grupo */
-legend { font-weight: 600; padding: 0 .4rem; }  /* titulo del grupo */
 
-/* El footer queda sin estilo a proposito: es uno de los retos. */
+fieldset {
+  border: 1px solid #d2d2d7;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 0.4rem;
+}
+
+footer {
+  background: #1d1d1f;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
