@@ -1,49 +1,45 @@
-// main.js — punto donde quedó la Clase 7.
-// Este es el PUNTO DE PARTIDA de la Clase 8: durante la clase este archivo se
-// reescribe con sintaxis moderna y al final se parte en módulos
-// (datos.js · carrito.js · formato.js · ui.js · main.js).
+import { contarPorCategoria, productos } from "./datos.js";
+import formatearPrecio from "./formato.js";
+import {
+  agregarAlCarrito,
+  aplicarDescuento,
+  buscarPorNombre,
+  masCaroDe,
+  resumenCarrito,
+} from "./carrito.js";
+import { fichaProducto, resumenStock } from "./ui.js";
 
-// El catálogo de TechCart, como datos: un array de objetos.
-const productos = [
-  { nombre: "MacBook Pro 14", precio: 1999.99, categoria: "laptops",     stock: 5, hijos : {
-    nombre : "Edward",
-    apellido : "Carlos",
-    dni: 34343434,
-    envio: {costo: 10}
-  } },
-  { nombre: "iPhone 13 Pro",  precio: 1099.99, categoria: "smartphones", stock: 8 },
-  { nombre: "iPad Mini",      precio: 499.99,  categoria: "tablets",     stock: 0 },
-  { nombre: "AirPods Max",    precio: 549.99,  categoria: "audio",       stock: 3 },
-]
+const catalogo = productos.map(
+  ({ nombre, precio }) => `${nombre}: ${formatearPrecio(precio)}`,
+);
 
-// Ejercicio 3 de la Clase 7: agregar un quinto producto y leer el catálogo.
-productos.push({ nombre: "Apple Watch", precio: 399.99, categoria: "audio", stock: 6 });
-//COPIA LA LISAT DE PRODUCTOS Y PEGALA EN COPIA
+console.log("Catálogo:", catalogo);
+console.log("Productos por categoría:", contarPorCategoria(productos));
+console.log("Ficha de producto:", fichaProducto(productos[0]));
+console.log("Resumen de stock:", resumenStock(productos));
 
-const magicMouse = {
-  nombre : "Magic Mouse",
-  precio: 79.99,
-  categoria : "accesorios",
-  stock : 12
-};
-const copia = [...productos];
-// copia.push(magicMouse);
+const productoOriginal = productos[0];
+const productoConDescuento = aplicarDescuento(productoOriginal);
+const productoConDescuentoEspecial = aplicarDescuento(productos[1], 20);
 
-const copiaConNuevo = [magicMouse, ...productos, magicMouse];
-console.log(productos.length);
-console.log(copiaConNuevo.length);
+console.log("Descuento predeterminado:", productoConDescuento);
+console.log("Descuento especial:", productoConDescuentoEspecial);
+console.log("Producto original sin cambios:", productoOriginal);
 
-const laptops = productos.filter(p => p.categoria === "laptops");
-const audio = productos.filter(p => p.categoria === "audio");
-const seleccionados = [...laptops, ...audio];
-// console.log(seleccionados);
-// console.log(productos);
+const productoEncontrado = buscarPorNombre(productos, "iPad Mini");
+const productoInexistente = buscarPorNombre(productos, "Magic Mouse");
 
-const porPrecio = [...productos].sort((a,b) => a.precio - b.precio);
-// console.log(porPrecio);
+console.log("Producto encontrado:", productoEncontrado);
+console.log(
+  "Búsqueda inexistente:",
+  productoInexistente?.nombre ?? "Producto no encontrado",
+);
 
-const rebajado = {...productos[0], hijos: {
-  nombre : "edward",
-}};
-console.log(productos[0]);
-console.log(rebajado);
+const carritoInicial = [];
+const carritoConMacBook = agregarAlCarrito(carritoInicial, productos[0]);
+const carrito = agregarAlCarrito(carritoConMacBook, productos[3]);
+
+console.log("Carrito inicial:", carritoInicial);
+console.log("Carrito actual:", carrito);
+console.log("Resumen del carrito:", resumenCarrito(carrito));
+console.log("Producto más caro:", masCaroDe(productos));
